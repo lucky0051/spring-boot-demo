@@ -18,17 +18,20 @@ public class PdfUtil {
             PdfWriter.getInstance(document, outputStream);
             document.open();
             // Write column names
-            Map<String, Object> firstRow = queryResults.get(0);
+            /*Map<String, Object> firstRow = queryResults.get(0);
             for (String column : firstRow.keySet()) {
                 Font boldFont = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
                 Paragraph paragraph = new Paragraph(column, boldFont);
                 document.add(paragraph);
-            }
+            }*/
             document.add(new Paragraph("\n"));
             // Write data rows
             for (Map<String, Object> row : queryResults) {
-                for (Object value : row.values()) {
-                    Paragraph paragraph = new Paragraph(value.toString());
+                Font boldFont = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
+                for (Map.Entry<String, Object> entry : row.entrySet()) {
+                    String k = entry.getKey();
+                    Object v = entry.getValue();
+                    Paragraph paragraph = new Paragraph(k + " :" + v.toString(), boldFont);
                     document.add(paragraph);
                 }
                 document.add(new Paragraph("\n"));

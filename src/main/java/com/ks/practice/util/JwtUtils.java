@@ -23,11 +23,8 @@ public class JwtUtils {
     @Value("${spring.demo.practice.app.jwtSecret}")
     private String jwtSecret;
 
-    @Value("${spring.demo.practice.app.jwtExpirationMs}")
+    @Value("${spring.demo.practice.app.jwtExpirationMn}")
     private int jwtExpirationMs;
-
-    @Value("${spring.demo.practice.app.jwtCookieName}")
-    private String jwtCookie;
 
 
     public String getUserNameFromJwtToken(String token) {
@@ -59,7 +56,7 @@ public class JwtUtils {
 
     public String generateTokenFromUsername(String username) {
         Instant issuedAt = Instant.now().truncatedTo(ChronoUnit.SECONDS);
-        Instant expiration = issuedAt.plus(30, ChronoUnit.MINUTES);
+        Instant expiration = issuedAt.plus(jwtExpirationMs, ChronoUnit.MINUTES);
 
         log.info("Issued at: {}", issuedAt);
         log.info("Expires at: {}", expiration);

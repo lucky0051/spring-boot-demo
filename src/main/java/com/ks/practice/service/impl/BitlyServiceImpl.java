@@ -24,7 +24,7 @@ public class BitlyServiceImpl implements UrlShortnerService {
     public String getShortUrl(String longUrl) {
         String result = null;
         try {
-            //free limit 10/month
+            //free limit 10/month-left with 8
             CreateBitlinkResponse response = bitlyClient.bitlinks().shorten(longUrl).get();
             result = response.getLink();
 

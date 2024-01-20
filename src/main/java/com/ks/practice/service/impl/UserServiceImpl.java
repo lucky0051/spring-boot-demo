@@ -18,10 +18,9 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Slf4j
 public class UserServiceImpl implements UserService {
-    UserDetailsMapper userDetailsMapper;
-    private UserRepository userRepository;
-
-    private UrlShortnerService bitlyService;
+    private final UserDetailsMapper userDetailsMapper;
+    private final UserRepository userRepository;
+    private final UrlShortnerService bitlyService;
 
     @Override
     public UserDetailsEntity addUser(UserDetailsRequest userDetailsRequest) {
@@ -68,7 +67,7 @@ public class UserServiceImpl implements UserService {
         Map<String, Object> userMap = new HashMap<>();
         userMap.put("Name", result.getName());
         userMap.put("Email", result.getEmail());
-        userMap.put("Mobile", result.getPhonneNo());
+        userMap.put("Mobile", result.getPhoneNo());
         userMap.put("LinkedIn", result.getLinkedInURL());
         return userMap;
 

@@ -10,6 +10,6 @@ import lombok.*;
 public class UserDetailsResponse {
     private String name;
     private String email;
-    private String phonneNo;
+    private String phoneNo;
     private String linkedInURL;
 }

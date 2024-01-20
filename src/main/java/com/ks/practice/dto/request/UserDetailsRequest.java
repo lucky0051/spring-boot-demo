@@ -18,7 +18,7 @@ public class UserDetailsRequest {
     @Email
     private String email;
 
-    @Pattern(regexp = "\\d{10}", message = "The phone number code is invalid.")
+    //@Pattern(regexp = "^\\d{10}$", message = "The phone number code is invalid.")
     private String phoneNo;
 
     @Pattern(regexp = "\\b(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]"
