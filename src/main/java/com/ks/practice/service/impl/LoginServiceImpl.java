@@ -2,8 +2,8 @@ package com.ks.practice.service.impl;
 
 import com.ks.practice.dto.request.LoginRequest;
 import com.ks.practice.dto.response.LoginRespose;
-import com.ks.practice.entity.UserLoginTokenEntity;
-import com.ks.practice.repository.UserLoginTokenEntityRepository;
+import com.ks.practice.entity.UserLoginToken;
+import com.ks.practice.repository.UserLoginTokenRepository;
 import com.ks.practice.service.LoginService;
 import com.ks.practice.util.JwtUtils;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class LoginServiceImpl implements LoginService {
     private final AuthenticationManager authenticationManager;
-    private final UserLoginTokenEntityRepository userLoginTokenEntityRepository;
+    private final UserLoginTokenRepository userLoginTokenEntityRepository;
     private final JwtUtils jwtUtils;
 
     @Override
@@ -29,7 +29,7 @@ public class LoginServiceImpl implements LoginService {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         String token = jwtUtils.generateTokenFromUsername(userDetails.getUsername());
         if (token != null) {
-            UserLoginTokenEntity tokenEntity = new UserLoginTokenEntity();
+            UserLoginToken tokenEntity = new UserLoginToken();
             tokenEntity.setToken(token);
             tokenEntity.setUserName(loginRequest.getUserName());
             userLoginTokenEntityRepository.save(tokenEntity);

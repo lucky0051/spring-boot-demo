@@ -17,13 +17,7 @@ public class PdfUtil {
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             PdfWriter.getInstance(document, outputStream);
             document.open();
-            // Write column names
-            /*Map<String, Object> firstRow = queryResults.get(0);
-            for (String column : firstRow.keySet()) {
-                Font boldFont = new Font(Font.FontFamily.HELVETICA, 12, Font.BOLD);
-                Paragraph paragraph = new Paragraph(column, boldFont);
-                document.add(paragraph);
-            }*/
+
             document.add(new Paragraph("\n"));
             // Write data rows
             for (Map<String, Object> row : queryResults) {

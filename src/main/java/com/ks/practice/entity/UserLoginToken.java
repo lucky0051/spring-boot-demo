@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "user_login_token")
-public class UserLoginTokenEntity {
+public class UserLoginToken {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
