@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -16,7 +18,10 @@ public class LoginDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "user_name")
+    @Column(name = "user_name", unique = true)
     private String userName;
     private String password;
+
+    @OneToMany(mappedBy = "loginDetails")
+    private Set<UserDetailsEntity> users;
 }

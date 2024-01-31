@@ -67,4 +67,18 @@ public class JwtUtils {
                 .signWith(key())
                 .compact();
     }
+
+    public String generateTokenFromUserId(Long userId) {
+        Instant issuedAt = Instant.now().truncatedTo(ChronoUnit.SECONDS);
+        Instant expiration = issuedAt.plus(jwtExpirationMs, ChronoUnit.MINUTES);
+
+        log.info("Issued at: {}", issuedAt);
+        log.info("Expires at: {}", expiration);
+        return Jwts.builder()
+                .setSubject(Long.toString(userId))
+                .setIssuedAt(Date.from(issuedAt))
+                .setExpiration(Date.from(expiration))
+                .signWith(key())
+                .compact();
+    }
 }

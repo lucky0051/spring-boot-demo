@@ -16,6 +16,7 @@ public class UserDetailsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(unique = true)
     private String name;
     @Column(unique = true)
     private String email;
@@ -23,6 +24,10 @@ public class UserDetailsEntity {
     private String phoneNo;
     @Column(name = "linkedin_url")
     private String linkedInURL;
+
+    @ManyToOne
+    @JoinColumn(name = "login_user_id", nullable = true)
+    private LoginDetails loginDetails;
 
 
 }
