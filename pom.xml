@@ -77,8 +77,8 @@
             <version>0.12.3</version>
         </dependency>
     </dependencies>
-
     <build>
+   <finalname>maven-web-app</finalname>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
